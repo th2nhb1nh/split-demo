@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Feature Flag Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Split Feature Flag Demo</h1>
+        
+        {% if error %}
+        <div class="error-message">
+            <h3>Error</h3>
+            <p>{{ error }}</p>
+        </div>
+        {% else %}
+        <div class="feature-status">
+            <h2>Feature Flag Status</h2>
+            <p>Current treatment: <span class="treatment">{{ treatment }}</span></p>
+        </div>
+
+        {% if is_feature_enabled %}
+        <div class="feature-enabled">
+            <h3>New Feature Enabled! 🎉</h3>
+            <p>You're seeing the new version of this feature.</p>
+        </div>
+        {% else %}
+        <div class="feature-disabled">
+            <h3>Standard Feature 📦</h3>
+            <p>You're seeing the standard version of this feature.</p>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
